@@ -8,4 +8,5 @@
 
 architecture = Category.create(name: "Architecture")
 sports = Category.create(name: "Sports")
-science = Category.create(name: "Science")
+
+computer_science = Category.create(name: "Computer Science")
