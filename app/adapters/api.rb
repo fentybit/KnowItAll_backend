@@ -16,7 +16,12 @@ class Api
             animal["question"] = data_obj["question"]
 
             # Shuffling multiple choice
-            multiple_choice = [data["results"][0]["correct_answer"], data["results"][0]["incorrect_answers"][0], data["results"][0]["incorrect_answers"][1], data["results"][0]["incorrect_answers"][2]].shuffle
+            multiple_choice = [
+                data_obj["correct_answer"], 
+                data_obj["incorrect_answers"][0], 
+                data_obj["incorrect_answers"][1], 
+                data_obj["incorrect_answers"][2]
+            ].shuffle
 
             animal["choice1"] = multiple_choice[0]
             animal["choice2"] = multiple_choice[1]
