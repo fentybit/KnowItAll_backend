@@ -1,6 +1,6 @@
 class Api
     
-    #! API from https://opentdb.com/api.php?amount=50&category=27&type=multiple
+    #! ANIMALS
     def self.animals
         url = "https://opentdb.com/api.php?amount=50&category=27&type=multiple"
         uri = URI.parse(url)
@@ -36,7 +36,7 @@ class Api
         File.write("animals.json", animals.to_json)
     end 
 
-    #! API from https://opentdb.com/api.php?amount=49&category=26&type=multiple
+    #! CELEBRITIES
     def self.celebrities
         url = "https://opentdb.com/api.php?amount=49&category=26&type=multiple"
         uri = URI.parse(url)
@@ -72,7 +72,7 @@ class Api
         File.write("celebrities.json", celebrities.to_json)
     end 
 
-    #! API from https://opentdb.com/api.php?amount=50&category=18&type=multiple
+    #! COMPUTER SCIENCE
     def self.computer_science
         url = "https://opentdb.com/api.php?amount=50&category=18&type=multiple"
         uri = URI.parse(url)
@@ -108,7 +108,7 @@ class Api
         File.write("computer_science.json", computer_science.to_json)
     end 
 
-    #! API from https://opentdb.com/api.php?amount=50&category=22&type=multiple
+    #! GEOGRAPHY
     def self.geography
         url = "https://opentdb.com/api.php?amount=50&category=22&type=multiple"
         uri = URI.parse(url)
@@ -144,7 +144,7 @@ class Api
         File.write("geography.json", geography.to_json)
     end 
 
-    #! API from https://opentdb.com/api.php?amount=50&category=23&type=multiple
+    #! HISTORY
     def self.history
         url = "https://opentdb.com/api.php?amount=50&category=23&type=multiple"
         uri = URI.parse(url)
@@ -180,7 +180,7 @@ class Api
         File.write("history.json", history.to_json)
     end 
 
-    #! API from https://opentdb.com/api.php?amount=36&category=19&type=multiple
+    #! MATHEMATICS
     def self.mathematics
         url = "https://opentdb.com/api.php?amount=36&category=19&type=multiple"
         uri = URI.parse(url)
@@ -216,7 +216,7 @@ class Api
         File.write("mathematics.json", mathematics.to_json)
     end 
 
-    #! API from https://opentdb.com/api.php?amount=50&category=12&type=multiple
+    #! MUSIC
     def self.music
         url = "https://opentdb.com/api.php?amount=50&category=12&type=multiple"
         uri = URI.parse(url)
@@ -251,4 +251,41 @@ class Api
 
         File.write("music.json", music.to_json)
     end 
+
+    #! SPORTS
+    def self.sports
+        url = "https://opentdb.com/api.php?amount=50&category=21&type=multiple"
+        uri = URI.parse(url)
+        response = Net::HTTP.get_response(uri)
+        
+        data = JSON.parse(response.body)
+        
+        sports = []
+
+        data["results"].each do |data_obj|
+            sport = {}
+
+            sport["question"] = data_obj["question"]
+
+            # Shuffling multiple choice
+            multiple_choice = [
+                data_obj["correct_answer"], 
+                data_obj["incorrect_answers"][0], 
+                data_obj["incorrect_answers"][1], 
+                data_obj["incorrect_answers"][2]
+            ].shuffle
+
+            sport["choice1"] = multiple_choice[0]
+            sport["choice2"] = multiple_choice[1]
+            sport["choice3"] = multiple_choice[2]
+            sport["choice4"] = multiple_choice[3]
+            
+            sport["answer"] = data_obj["correct_answer"]
+
+            sports << sport
+        end 
+
+        File.write("sports.json", sports.to_json)
+    end 
+
 end 
