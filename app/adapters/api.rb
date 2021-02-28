@@ -179,4 +179,40 @@ class Api
 
         File.write("history.json", history.to_json)
     end 
+
+    #! API from https://opentdb.com/api.php?amount=36&category=19&type=multiple
+    def self.mathematics
+        url = "https://opentdb.com/api.php?amount=36&category=19&type=multiple"
+        uri = URI.parse(url)
+        response = Net::HTTP.get_response(uri)
+        
+        data = JSON.parse(response.body)
+        
+        mathematics = []
+
+        data["results"].each do |data_obj|
+            math = {}
+
+            math["question"] = data_obj["question"]
+
+            # Shuffling multiple choice
+            multiple_choice = [
+                data_obj["correct_answer"], 
+                data_obj["incorrect_answers"][0], 
+                data_obj["incorrect_answers"][1], 
+                data_obj["incorrect_answers"][2]
+            ].shuffle
+
+            math["choice1"] = multiple_choice[0]
+            math["choice2"] = multiple_choice[1]
+            math["choice3"] = multiple_choice[2]
+            math["choice4"] = multiple_choice[3]
+            
+            math["answer"] = data_obj["correct_answer"]
+
+            mathematics << math
+        end 
+
+        File.write("mathematics.json", mathematics.to_json)
+    end 
 end 
