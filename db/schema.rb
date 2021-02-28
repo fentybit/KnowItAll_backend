@@ -29,14 +29,15 @@ ActiveRecord::Schema.define(version: 2021_02_27_220035) do
     t.string "choice3"
     t.string "choice4"
     t.string "answer"
+    t.integer "category_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
-    t.string "email"
     t.string "avatar"
+    t.integer "score"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
