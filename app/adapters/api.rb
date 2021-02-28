@@ -143,4 +143,40 @@ class Api
 
         File.write("geography.json", geography.to_json)
     end 
+
+    #! API from https://opentdb.com/api.php?amount=50&category=23&type=multiple
+    def self.history
+        url = "https://opentdb.com/api.php?amount=50&category=23&type=multiple"
+        uri = URI.parse(url)
+        response = Net::HTTP.get_response(uri)
+        
+        data = JSON.parse(response.body)
+        
+        history = []
+
+        data["results"].each do |data_obj|
+            hist = {}
+
+            hist["question"] = data_obj["question"]
+
+            # Shuffling multiple choice
+            multiple_choice = [
+                data_obj["correct_answer"], 
+                data_obj["incorrect_answers"][0], 
+                data_obj["incorrect_answers"][1], 
+                data_obj["incorrect_answers"][2]
+            ].shuffle
+
+            hist["choice1"] = multiple_choice[0]
+            hist["choice2"] = multiple_choice[1]
+            hist["choice3"] = multiple_choice[2]
+            hist["choice4"] = multiple_choice[3]
+            
+            hist["answer"] = data_obj["correct_answer"]
+
+            history << hist
+        end 
+
+        File.write("history.json", history.to_json)
+    end 
 end 
