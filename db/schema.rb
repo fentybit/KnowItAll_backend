@@ -17,7 +17,6 @@ ActiveRecord::Schema.define(version: 2021_02_27_220035) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
-    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -37,7 +36,14 @@ ActiveRecord::Schema.define(version: 2021_02_27_220035) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "avatar"
-    t.integer "score"
+    t.integer "animals_score", default: 0
+    t.integer "celebrities_score", default: 0
+    t.integer "computer_science_score", default: 0
+    t.integer "geography_score", default: 0
+    t.integer "history_score", default: 0
+    t.integer "mathematics_score", default: 0
+    t.integer "music_score", default: 0
+    t.integer "sports_score", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

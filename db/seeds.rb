@@ -17,19 +17,26 @@ main_user = User.create(name: "Fenty Hall", avatar: "https://pokeres.bastionbot.
 
 
 #! Category Database
-animals = Category.create(name: "Animals", score: 0)
-celebrities = Category.create(name: "Celebrities", score: 0)
-computer_science = Category.create(name: "Computer Science", score: 0)
-geography = Category.create(name: "Geography", score: 0)
-history = Category.create(name: "History", score: 0)
-mathematics = Category.create(name: "Mathematics", score: 0)
-music = Category.create(name: "Music", score: 0)
-sports = Category.create(name: "Sports", score: 0)
+animals = Category.create(name: "Animals")
+celebrities = Category.create(name: "Celebrities")
+computer_science = Category.create(name: "Computer Science")
+geography = Category.create(name: "Geography")
+history = Category.create(name: "History")
+mathematics = Category.create(name: "Mathematics")
+music = Category.create(name: "Music")
+sports = Category.create(name: "Sports")
 
 
 #! Question Database
 # Instantiate Animals Trivia from JSON Data
-JSON.parse(File.read("animals.json")).each do |animal|
-    animals.questions
+animals.questions.create(JSON.parse(File.read("animals.json")))
+celebrities.questions.create(JSON.parse(File.read("celebrities.json")))
+computer_science.questions.create(JSON.parse(File.read("computer_science.json")))
+geography.questions.create(JSON.parse(File.read("geography.json")))
+history.questions.create(JSON.parse(File.read("history.json")))
+mathematics.questions.create(JSON.parse(File.read("mathematics.json")))
+music.questions.create(JSON.parse(File.read("music.json")))
+sports.questions.create(JSON.parse(File.read("sports.json")))
+
 
 puts "Seeding Database Success!"
