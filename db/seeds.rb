@@ -11,10 +11,8 @@ User.destroy_all
 Category.destroy_all
 Question.destroy_all
 
-
 #! User Database
 main_user = User.create(name: "Fenty Hall", avatar: "https://pokeres.bastionbot.org/images/pokemon/5.png")
-
 
 #! Category Database
 animals = Category.create(name: "Animals")
@@ -26,17 +24,15 @@ mathematics = Category.create(name: "Mathematics")
 music = Category.create(name: "Music")
 sports = Category.create(name: "Sports")
 
-
 #! Question Database
 # Instantiate Animals Trivia from JSON Data
-animals.questions.create(JSON.parse(File.read("animals.json")))
-celebrities.questions.create(JSON.parse(File.read("celebrities.json")))
-computer_science.questions.create(JSON.parse(File.read("computer_science.json")))
-geography.questions.create(JSON.parse(File.read("geography.json")))
-history.questions.create(JSON.parse(File.read("history.json")))
-mathematics.questions.create(JSON.parse(File.read("mathematics.json")))
-music.questions.create(JSON.parse(File.read("music.json")))
-sports.questions.create(JSON.parse(File.read("sports.json")))
-
+animals.questions.create(Api.animals)
+celebrities.questions.create(Api.celebrities)
+computer_science.questions.create(Api.computer_science)
+geography.questions.create(Api.geography)
+history.questions.create(Api.history)
+mathematics.questions.create(Api.mathematics)
+music.questions.create(Api.music)
+sports.questions.create(Api.sports)
 
 puts "Seeding Database Success!"
