@@ -22,7 +22,7 @@ gem 'rest-client'
 # gem 'image_processing', '~> 1.2'
 
 # Access a new generator, Serializer
-gem 'fast-jsonapi'
+gem 'fast_jsonapi'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
@@ -33,7 +33,7 @@ gem 'nokogiri'
 gem 'json'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
-# gem 'rack-cors'
+gem 'rack-cors'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
