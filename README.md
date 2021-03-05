@@ -1,4 +1,4 @@
-# Know It All :: Backend
+# Know It All :: Back-End
 
 <div align="center">
   <img src="#">
@@ -21,13 +21,7 @@ Welcome to my simplistic version of Online Trivia Games.<br>
 ## Features
 
 <div align="center">
-  <img src="#">
-</div>
-
-<br>
-
-<div align="center">
-  <img src="#">
+  <img src="erd.png">
 </div>
 
 <br>
@@ -68,11 +62,8 @@ $ rails s
 Open Chrome browser, and redirect to 'http://localhost:3000' to start the Rails API.
 
 <strong>Frontend</strong>
-<p>Open Chrome browser, and redirect to '../know_it_all_frontend/index.html' to start the app.</p>
+<p>Open Chrome browser, and redirect to 'http://127.0.0.1:5500/index.html' to start the app.</p>
 
-**Alternatively, it is fully deployed on Heroku!**
-<br>
-<a href="#">Know It All</a>
 
 ## Build Status and Future Improvement
 <p>Current project-built was completed in a 2-week timeframe from API data search, model association development, and MVP for the user interface. Future cycle of product development as follows:</p>
