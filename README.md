@@ -1,7 +1,7 @@
 # Know It All :: Back-End
 
 <div align="center">
-  <img src="#">
+  <img src="main.gif">
 </div>
 
 <br>
