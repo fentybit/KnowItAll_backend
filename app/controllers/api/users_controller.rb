@@ -24,9 +24,20 @@ class Api::UsersController < ApplicationController
         end 
     end 
 
+    def update 
+        user = User.find_by(id: params[:id])
+        user.update(user_params)
+
+        if user.save
+            render json: user
+        else 
+            render json: { message: 'User not saved.' }
+        end 
+    end 
+
     private 
 
         def user_params
-            params.require(:user).permit(:name, :avatar)
+            params.require(:user).permit(:name, :avatar, :animals_score, :celebrities_score, :computer_science_score, :geography_score, :history_score, :mathematics_score, :music_score, :sports_score)
         end 
 end
