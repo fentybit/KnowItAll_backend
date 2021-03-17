@@ -10,9 +10,9 @@ class Api
         self.category_questions
     end 
 
-    #! CELEBRITIES 49
+    #! CELEBRITIES 48
     def self.celebrities
-        url = "https://opentdb.com/api.php?amount=49&category=26&type=multiple"
+        url = "https://opentdb.com/api.php?amount=48&category=26&type=multiple"
         uri = URI.parse(url)
         response = Net::HTTP.get_response(uri)   
         @@data = JSON.parse(response.body)["results"]
@@ -50,9 +50,9 @@ class Api
         self.category_questions
     end 
 
-    #! MATHEMATICS 36
+    #! MATHEMATICS 33
     def self.mathematics
-        url = "https://opentdb.com/api.php?amount=36&category=19&type=multiple"
+        url = "https://opentdb.com/api.php?amount=33&category=19&type=multiple"
         uri = URI.parse(url)
         response = Net::HTTP.get_response(uri)
         @@data = JSON.parse(response.body)["results"]
