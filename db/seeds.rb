@@ -12,7 +12,7 @@ Category.destroy_all
 Question.destroy_all
 
 #! User Database
-main_user = User.create(name: "Fenty Hall", avatar: "https://pokeres.bastionbot.org/images/pokemon/5.png")
+main_user = User.create(name: "Fenty Hall", avatar: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/5.png")
 
 #! Category Database
 animals = Category.create(name: "Animals")
